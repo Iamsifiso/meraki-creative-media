@@ -1,0 +1,7 @@
+# Allow all user agents
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://merakicreativemedia.co.za/sitemap.xml
