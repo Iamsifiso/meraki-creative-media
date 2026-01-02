@@ -887,13 +887,164 @@ git push -u origin main
 
 ---
 
-**Last Updated:** 2025-01-02
+**Last Updated:** 2026-01-02
 **Next Session:** TBD
-**Current Phase:** Feature Updates Complete → Ready for Testing & Deployment
+**Current Phase:** API Configuration in Progress → Testing Pending
+
+---
+
+## Session 3: API Configuration Setup (2026-01-02)
+
+### Objective
+Configure API credentials for Google Calendar and Gmail SMTP to enable booking and contact form functionality.
+
+### Completed Tasks
+
+#### 1. Session Log Maintenance ✅
+- Committed Session 2 updates to SESSION_LOG.md
+- Pushed to GitHub repository
+- **Commit:** `774e4b2` - Update session log with Session 2 details and current project state
+
+#### 2. Environment File Restructuring ✅
+- Updated `.env.local` with clear separation between development and production
+- Added comprehensive comments explaining:
+  - Development testing configuration (developer's personal email/calendar)
+  - Client/production information (displayed on website)
+  - Clear guidance on which credentials are for backend vs display
+
+**Key Decision:** Developer will use personal Google account for testing, client credentials will be configured in Vercel for production.
+
+#### 3. Partial API Credentials Configuration ✅
+- **Gmail SMTP:** Fully configured
+  - EMAIL_USER: Developer's personal Gmail
+  - EMAIL_PASSWORD: App Password generated
+  - Status: Ready for testing
+
+- **Google Calendar API:** Partially configured
+  - GOOGLE_CLIENT_ID: ✅ Configured
+  - GOOGLE_CLIENT_SECRET: ✅ Configured
+  - GOOGLE_REDIRECT_URI: ✅ Set to localhost
+  - GOOGLE_CALENDAR_ID: ⏳ Pending (needs to be obtained)
+  - GOOGLE_REFRESH_TOKEN: ⏳ Pending (needs OAuth flow)
+
+### Files Modified This Session
+- `SESSION_LOG.md` - Updated with Session 3 progress
+- `.env.local` - Restructured with development/production separation and partial credentials
+
+### Configuration Strategy Established
+
+**Development Environment (Current):**
+- Developer uses personal Gmail account for testing
+- All test emails sent from/to developer's email
+- Calendar events created in developer's Google Calendar
+- Website displays client email (`meraki.cmedia@gmail.com`)
+- Safe testing without affecting client's calendar
+
+**Production Environment (Future):**
+- Client's `meraki.cmedia@gmail.com` credentials in Vercel
+- All production emails/calendar events use client account
+- Same email displayed on website
+- Seamless transition from dev to prod
+
+---
+
+## Current Status
+
+### API Configuration Progress
+| Component | Status | Details |
+|-----------|--------|---------|
+| Gmail SMTP | ✅ Complete | App Password configured for developer account |
+| Google Client ID | ✅ Complete | OAuth credentials created |
+| Google Client Secret | ✅ Complete | OAuth credentials created |
+| Google Redirect URI | ✅ Complete | Set to localhost for development |
+| Google Calendar ID | ⏳ Pending | Need to create/identify calendar |
+| Google Refresh Token | ⏳ Pending | Need to complete OAuth flow |
+
+### Next Steps for Session 4
+1. **Complete Google Calendar Setup:**
+   - Create dedicated "Meraki Bookings" calendar OR use developer's primary calendar
+   - Obtain Calendar ID from Google Calendar settings
+   - Update `GOOGLE_CALENDAR_ID` in `.env.local`
+
+2. **Generate Refresh Token:**
+   - Use OAuth 2.0 Playground with existing Client ID/Secret
+   - Authorize Calendar API v3 access
+   - Exchange code for refresh token
+   - Update `GOOGLE_REFRESH_TOKEN` in `.env.local`
+
+3. **Test Booking System:**
+   - Start development server
+   - Submit test booking through website
+   - Verify calendar event created in Google Calendar
+   - Verify confirmation email received
+   - Check error logs for any issues
+
+4. **Test Contact Form:**
+   - Submit test contact inquiry
+   - Verify email received
+   - Check formatting and content
+
+5. **Fix Production Warning:**
+   - Add `metadataBase` to Next.js config for proper social media previews
+
+6. **Prepare for Deployment:**
+   - Document client credential requirements
+   - Create deployment checklist
+   - Plan Vercel environment variable setup
+
+---
+
+## Decisions Made This Session
+
+### 1. Development vs Production Strategy
+- **Decision:** Use developer's personal credentials for local testing
+- **Reason:** Safe testing environment without affecting client's calendar/email
+- **Implementation:** `.env.local` uses personal account, Vercel will use client account
+- **Benefit:** Can test freely, easy to debug, no risk to production data
+
+### 2. Environment File Documentation
+- **Decision:** Add extensive inline comments to `.env.local`
+- **Reason:** Clear guidance for future developers and client handoff
+- **Result:** Self-documenting configuration file
+
+### 3. Session Continuation Point
+- **Decision:** Pause after partial credential setup
+- **Reason:** Developer requested to continue in next session
+- **Pending:** Calendar ID and Refresh Token generation
+
+---
+
+## Notes for Next Session
+
+### What to Ask
+1. "Ready to complete the Google Calendar API setup?"
+2. "Do you want to create a dedicated 'Meraki Bookings' calendar or use your primary calendar?"
+3. "After testing works, should we proceed with fixing the metadataBase warning?"
+
+### What to Do First
+1. Guide through Calendar ID retrieval
+2. Walk through OAuth Playground for refresh token
+3. Update `.env.local` with remaining credentials
+4. Test booking system end-to-end
+5. Test contact form
+
+### Files to Check
+- `.env.local` - Verify credentials added correctly
+- Console logs - Check for API errors during testing
+- Google Calendar - Confirm events are created
+- Email inbox - Confirm emails received
 
 ---
 
 ## Changelog
+
+### 2026-01-02 - Session 3
+- ✅ Committed Session 2 updates
+- ✅ Restructured `.env.local` with dev/prod separation
+- ✅ Configured Gmail SMTP (complete)
+- ✅ Configured Google OAuth credentials (partial)
+- ⏳ Google Calendar ID (pending)
+- ⏳ Google Refresh Token (pending)
 
 ### 2025-01-02 - Session 2
 - ✅ Logo system enhancement (cropped variant)
