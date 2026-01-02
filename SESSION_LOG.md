@@ -440,13 +440,472 @@ lsof -i :3000
 
 ---
 
-**Last Updated:** 2025-12-31
+## Session 2: Website Structure & Feature Updates (2025-01-02)
+
+### Objective
+Implement major website structure changes, add social media integration, update service offerings with transparent pricing, reorganize portfolio, and connect Git repository to GitHub.
+
+### Completed Tasks
+
+#### 1. Logo System Enhancement ✅
+- Added 'cropped' variant support to Logo component
+- Updated Header to use cropped logo (`logo-full-horizontal-light-cropped.png`)
+- Footer continues using full horizontal logo
+- Files modified: `src/components/layout/Logo.tsx`, `src/components/layout/Header.tsx`
+
+**Implementation:**
+```typescript
+variant === 'cropped'
+  ? '/logos/logo-full-horizontal-light-cropped.png'
+  : variant === 'full'
+  ? '/logos/logo-full-horizontal-light.jpg'
+  : '/logos/logo-icon-light.jpg'
+```
+
+#### 2. Social Media Integration ✅
+- Added all 4 social media platforms with brand-specific hover effects:
+  - **TikTok:** `https://www.tiktok.com/@meraki_creative_media` (cyan hover: `#00f2ea`)
+  - **Instagram:** `https://www.instagram.com/meraki_creative_media` (purple-pink gradient)
+  - **Facebook:** `https://www.facebook.com/share/17BBYnRxEx/` (blue hover: `#1877F2`)
+  - **WhatsApp:** `+27 81 586 9868` (green hover: `#25D366`)
+- Implemented hover tooltips and icon animations
+- Added to both Footer and Contact page with consistent styling
+- Files modified: `src/components/layout/Footer.tsx`, `src/app/contact/page.tsx`
+
+**Design Features:**
+- Square icon boxes (48x48px) with rounded corners
+- Smooth hover transitions with scale effect (1.1x)
+- Tooltip labels on hover
+- Accessibility: aria-label attributes
+
+#### 3. Email Address Update ✅
+- Changed from `info@merakicreativemedia.co.za` to `meraki.cmedia@gmail.com` across entire project
+- Updated in 8+ files:
+  - `src/components/layout/Footer.tsx`
+  - `src/app/contact/page.tsx`
+  - `src/app/api/contact/route.ts`
+  - `.env.example`
+  - `.env.production.example`
+  - `README.md`
+  - `SETUP_GUIDE.md`
+  - `DEPLOYMENT_GUIDE.md`
+  - `project-assets/meraki-website-prompt.md`
+
+#### 4. Major Service Restructuring ✅
+**Key Decision:** Clarified that "Videography = BTS" (Behind the Scenes)
+
+**Portrait Photography Packages Implemented:**
+- **Bronze Package:** R350
+  - 30 minute session
+  - 25-30 edited photos
+  - 1 outfit change
+
+- **Silver Package:** R650 (Most Popular)
+  - 1 hour session
+  - 30-50 edited photos
+  - 2 outfit changes
+  - **Free Outfit Highlight Reel**
+  - Featured with orange ring and "Most Popular" badge
+
+- **Gold Package:** R900
+  - 2 hour session
+  - 60-80 edited photos
+  - 2-3 outfit changes
+  - **Free Outfit Highlight Reel**
+
+**BTS Event Content Service:**
+- **Base Package:** R800
+  - 1.5 hours coverage
+  - 2 edited videos
+  - 40 individual videos (unedited)
+  - 20 photos
+- **Add-ons with transparent pricing:**
+  - Additional edited videos: R200 per video
+  - Additional individual videos: R100 for every 5 videos
+  - Additional time: R200 per 30 minutes
+
+**Files Modified:**
+- `src/app/services/page.tsx` (complete rewrite)
+- `src/components/home/ServicesPreview.tsx` (reduced to 2 services)
+- `src/lib/utils/booking-helpers.ts` (4 service types)
+
+**Bug Fix:** "Most Popular" badge positioning
+- Issue: Badge was clipped by Card's overflow-hidden
+- Solution: Wrapped Card in relative positioned div with padding-top, moved badge outside Card
+
+#### 5. Portfolio Reorganization ✅
+**Simplified Filter System:**
+- Reduced from 6 categories to 4:
+  - **All Works** - Shows everything
+  - **Photos** - All image type items
+  - **Videos** - All video type items
+  - **BTS** - Behind the Scenes videos only (4 specific videos)
+
+**BTS Videos Flagged:**
+- Medical Reskin Full (`portfolio-medical-reskin-full.MOV`)
+- Lifestyle Fashion Pink (`portfolio-lifestyle-fashion-pink.MOV`)
+- Fashion Blue Dress (`portfolio-fashion-blue-dress.MOV`)
+- Lifestyle Café (`portfolio-lifestyle-cafe-red.MP4`)
+
+**Type System Update:**
+- Added optional `isBts?: boolean` property to `PortfolioItem` interface
+
+**Files Modified:**
+- `src/lib/utils/portfolio-data.ts` (added isBts flags)
+- `src/types/portfolio.ts` (type definition update)
+- `src/components/portfolio/PortfolioFilter.tsx` (new filter layout)
+- `src/components/portfolio/PortfolioContent.tsx` (BTS filter logic)
+
+#### 6. About Page BTS Section ✅
+**Replaced Static Images with Videos:**
+- Added 3 BTS videos:
+  - ReSkin Medical Aesthetics (`portfolio-medical-reskin-full.MOV`)
+  - Lifestyle Café (`portfolio-lifestyle-cafe-red.MP4`)
+  - Plato Coffee Commercial (`portfolio-commercial-plato-coffee.MOV`)
+- Implemented responsive grid layout (1 col mobile, 2 col tablet, 3 col desktop)
+- Added video titles and category labels
+
+**Files Modified:**
+- `src/app/about/page.tsx`
+
+#### 7. VideoPlayer Component Creation ✅
+**New Component:** `src/components/shared/VideoPlayer.tsx`
+
+**Features:**
+- Custom play button overlay with orange branding
+- Native HTML5 video controls
+- Multiple video format support (MP4, QuickTime)
+- Click-to-play functionality
+- Play/pause state management
+- Responsive aspect-ratio container
+- Smooth transitions and hover effects
+
+**Technical Implementation:**
+```typescript
+interface VideoPlayerProps {
+  src: string;
+  title: string;
+  className?: string;
+}
+```
+
+#### 8. Footer Design Improvements ✅
+**Enhancements Made:**
+- Added subtle background pattern using CSS
+- Improved spacing and visual hierarchy
+- Integrated business hours into Contact Us section
+- Added clickable mailto: and tel: links for better UX
+- Removed CTA section per user request
+- Changed to 4-column grid layout:
+  1. Brand & Description
+  2. Quick Links (navigation)
+  3. Follow Us (social media)
+  4. Contact Us (email, phone, business hours, location)
+
+**Business Hours Display:**
+```
+Monday - Saturday
+9:00 AM - 5:00 PM SAST
+```
+
+#### 9. Git Repository Connection ✅
+**Remote Repository Setup:**
+- Connected to GitHub: `git@github.com:Iamsifiso/meraki-creative-media.git`
+- Set upstream branch tracking
+- Pushed all 4 commits to remote
+
+**Commits Pushed:**
+1. `1da7fec` - Initial commit: Meraki Creative Media website
+2. `678d37a` - Add comprehensive documentation for setup, testing, and deployment
+3. `1b3e3bb` - Add session log for development continuity tracking
+4. Latest commit - Update website structure and add new features
+
+**Git Commands Used:**
+```bash
+git remote add origin git@github.com:Iamsifiso/meraki-creative-media.git
+git push -u origin main
+```
+
+**Commit Message Style:** Professional and clean without AI attribution (user preference established)
+
+---
+
+## Current Project State (Updated)
+
+### Repository Information
+- **Location:** `/home/xenahne/SifiSoft/Meraki Creative Media`
+- **Git Status:** Clean working tree, all changes committed
+- **Remote:** ✅ Connected to `git@github.com:Iamsifiso/meraki-creative-media.git`
+- **Branch:** `main` (tracking `origin/main`)
+- **Total Commits:** 4
+- **Total Files:** 93 tracked files
+
+### Website Structure
+- **Services:** 2 main offerings (Photography, Videography/BTS)
+- **Photography Packages:** 3 tiers (Bronze R350, Silver R650, Gold R900)
+- **BTS Service:** Transparent pricing (Base R800 + add-ons)
+- **Portfolio Filters:** 4 categories (All, Photos, Videos, BTS)
+- **Social Media:** 4 platforms fully integrated
+- **Contact Email:** meraki.cmedia@gmail.com
+
+### New Files Added This Session
+1. `src/components/shared/VideoPlayer.tsx` - Reusable video player component
+2. `public/logos/logo-full-horizontal-light-cropped.png` - Cropped logo variant
+
+### Files Modified This Session (21 files)
+**Components:**
+- `src/components/layout/Logo.tsx`
+- `src/components/layout/Header.tsx`
+- `src/components/layout/Footer.tsx`
+- `src/components/home/ServicesPreview.tsx`
+- `src/components/portfolio/PortfolioFilter.tsx`
+- `src/components/portfolio/PortfolioContent.tsx`
+
+**Pages:**
+- `src/app/services/page.tsx`
+- `src/app/about/page.tsx`
+- `src/app/contact/page.tsx`
+
+**Data & Types:**
+- `src/lib/utils/portfolio-data.ts`
+- `src/lib/utils/booking-helpers.ts`
+- `src/types/portfolio.ts`
+
+**Documentation:**
+- `.env.example`
+- `.env.production.example`
+- `README.md`
+- `SETUP_GUIDE.md`
+- `DEPLOYMENT_GUIDE.md`
+- `project-assets/meraki-website-prompt.md`
+
+**Configuration:**
+- `package.json` (added lucide-react dependency)
+
+**Session Logs:**
+- `SESSION_LOG.md` (this file)
+
+---
+
+## Decisions Made This Session
+
+### 1. Service Structure Clarification
+- **Decision:** Videography and BTS are the same thing
+- **Implementation:** Website now shows 2 services (Photography, Videography/BTS)
+- **Reason:** Clarifies business offerings and reduces confusion
+- **Impact:** Simplified homepage, clearer service descriptions
+
+### 2. Transparent Pricing Strategy
+- **Decision:** Display all prices upfront with detailed package breakdowns
+- **Packages:** 3 portrait tiers + BTS base with add-ons
+- **Reason:** Builds trust, reduces back-and-forth inquiries
+- **User Feedback:** Silver package is "Most Popular"
+
+### 3. Portfolio Filter Simplification
+- **Decision:** Reduce from 6 categories to 4
+- **Old:** All, Lifestyle, Commercial, Fashion, Photos, Videos
+- **New:** All Works, Photos, Videos, BTS
+- **Reason:** Simpler navigation, clearer categorization
+- **Implementation:** Type-based filtering (image/video) + BTS flag
+
+### 4. Footer CTA Removal
+- **Decision:** Removed Call-to-Action section from footer
+- **Reason:** User preference for cleaner footer
+- **Alternative:** CTA still present on individual pages
+
+### 5. Business Hours Placement
+- **Decision:** Move business hours to Contact Us section in footer
+- **Old Location:** Brand section
+- **New Location:** Contact Us (with email, phone, location)
+- **Reason:** More logical grouping of contact information
+
+### 6. Social Media Styling
+- **Decision:** Brand-specific hover colors for social icons
+- **Implementation:** TikTok cyan, Instagram gradient, Facebook blue, WhatsApp green
+- **Reason:** Better user experience, recognizable brand colors
+
+### 7. Git Commit Message Policy
+- **Decision:** Professional commits without AI attribution
+- **User Quote:** "remember not to credit claude just keep the commit messages clean and professional"
+- **Applied To:** All future commits
+- **Example:** "Update website structure and add new features"
+
+---
+
+## Issues Resolved This Session
+
+### Issue 1: "Most Popular" Badge Not Showing
+**Problem:** Badge on Silver package was being clipped by Card component's overflow-hidden
+**Symptoms:** User reported "the 'Most popular' on the silver package is not showing properly"
+**Root Cause:** Card's overflow-hidden CSS property was cutting off positioned badge
+**Solution:**
+```typescript
+<div className="relative pt-6">
+  {pkg.popular && (
+    <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10">
+      <span className="bg-brand-orange text-white px-4 py-1 rounded-full">
+        Most Popular
+      </span>
+    </div>
+  )}
+  <Card className={`p-8 ${pkg.popular ? 'ring-2 ring-brand-orange' : ''}`}>
+    {/* Package content */}
+  </Card>
+</div>
+```
+**Status:** ✅ Resolved
+
+### Issue 2: VideoPlayer Component Not Found
+**Problem:** Module not found error when importing VideoPlayer
+**Root Cause:** Component was referenced in About page but didn't exist yet
+**Solution:** Created `src/components/shared/VideoPlayer.tsx` with full implementation
+**Features Added:** Play button overlay, native controls, state management
+**Status:** ✅ Resolved
+
+### Issue 3: TypeScript Error - isBts Property
+**Problem:** Adding `isBts: true` to portfolio items caused type error
+**Root Cause:** Property didn't exist in PortfolioItem interface
+**Solution:** Added `isBts?: boolean` to interface in `src/types/portfolio.ts`
+**Status:** ✅ Resolved
+
+---
+
+## Technical Improvements
+
+### Component Architecture
+- **New Pattern:** VideoPlayer as shared component (reusable across pages)
+- **Logo System:** Variant-based approach for different contexts
+- **Badge System:** Consistent usage across portfolio and services
+
+### Type Safety
+- **Enhanced Types:** Added optional properties for new features
+- **Strict Typing:** All new code follows TypeScript best practices
+- **0 Type Errors:** Build remains clean with no errors
+
+### User Experience
+- **Social Media:** Hover effects, tooltips, accessibility labels
+- **Video Playback:** Custom controls with brand styling
+- **Responsive Design:** All new components work on mobile/tablet/desktop
+- **Clickable Links:** mailto: and tel: links for better mobile UX
+
+### Code Organization
+- **Separation of Concerns:** Data layer (portfolio-data.ts) separate from components
+- **Reusable Components:** VideoPlayer can be used anywhere
+- **Consistent Styling:** Tailwind classes follow established patterns
+
+---
+
+## Next Steps (Priority Order)
+
+### Immediate
+1. ✅ Session log updated
+2. ⏳ Test all changes in development
+3. ⏳ Verify all links work correctly
+4. ⏳ Test video playback across browsers
+
+### Before Deployment
+1. **Final Testing:**
+   - Test all social media links
+   - Verify pricing displays correctly
+   - Test portfolio filters
+   - Test video player on mobile devices
+
+2. **Content Review:**
+   - Verify all prices are correct
+   - Check all text for typos
+   - Ensure all images/videos load
+
+3. **API Configuration (from Session 1):**
+   - Google Calendar API credentials
+   - Gmail SMTP setup
+   - Test booking system end-to-end
+
+### Deployment
+1. **Build & Verify:**
+   ```bash
+   npm run build
+   npm run lint
+   ```
+
+2. **Deploy to Vercel:**
+   - Push latest changes to GitHub (already done)
+   - Vercel auto-deploy will trigger
+   - Or manually deploy via Vercel dashboard
+
+3. **Environment Variables:**
+   - Add all variables in Vercel dashboard
+   - Update Google Calendar redirect URI for production
+
+4. **Post-Deployment:**
+   - Test live site thoroughly
+   - Verify social media links
+   - Test booking/contact forms
+   - Run Lighthouse audit
+
+---
+
+## Session Summary
+
+**Duration:** ~2 hours
+**Tasks Completed:** 9/9 (100%)
+**Files Created:** 2 (VideoPlayer.tsx, cropped logo)
+**Files Modified:** 21
+**Git Commits:** 2 new commits (total: 4)
+**Remote Connection:** ✅ Connected to GitHub
+**Status:** ✅ Ready for final testing and deployment
+
+**Key Achievements:**
+- Complete website restructure with new service offerings
+- Transparent pricing implementation
+- Social media integration across platform
+- Portfolio reorganization with BTS category
+- Git repository connected to GitHub
+- Professional commit history established
+
+---
+
+## Notes for Next Session
+
+### What to Ask
+1. "Have you tested all the new features in development?"
+2. "Are the prices and package details correct?"
+3. "Are you ready to deploy the updated site to Vercel?"
+4. "Do you need any content changes or additions?"
+
+### What to Check
+1. Git status - any uncommitted changes?
+2. Build status - still passing?
+3. All links working correctly?
+4. Videos playing on different devices?
+
+### Potential Tasks
+1. Help with final testing before deployment
+2. Assist with Vercel deployment
+3. Verify live site after deployment
+4. Add any additional content if needed
+5. Help with API configuration if not done yet
+
+---
+
+**Last Updated:** 2025-01-02
 **Next Session:** TBD
-**Current Phase:** Setup & Documentation Complete → Ready for API Configuration
+**Current Phase:** Feature Updates Complete → Ready for Testing & Deployment
 
 ---
 
 ## Changelog
+
+### 2025-01-02 - Session 2
+- ✅ Logo system enhancement (cropped variant)
+- ✅ Social media integration (4 platforms)
+- ✅ Email address update across project
+- ✅ Major service restructuring (Portrait packages + BTS)
+- ✅ Portfolio reorganization (4 filters)
+- ✅ About page BTS videos
+- ✅ VideoPlayer component creation
+- ✅ Footer design improvements
+- ✅ Git remote connection to GitHub
+- ✅ Session log updated
 
 ### 2025-12-31 - Session 1
 - ✅ Initialized Git repository
