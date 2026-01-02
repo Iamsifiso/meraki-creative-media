@@ -2,28 +2,28 @@ import { format, addDays, isWeekend, isBefore, startOfDay } from 'date-fns';
 
 export const serviceTypes = [
   {
-    id: 'portrait',
-    name: 'Portrait Photography',
-    description: 'Professional portrait session',
-    duration: '1-2 hours',
+    id: 'portrait-bronze',
+    name: 'Portrait Photography - Bronze Package',
+    description: '30 min session, 1 outfit, 25-30 edited photos - R350',
+    duration: '30 minutes',
   },
   {
-    id: 'event',
-    name: 'Event Photography & Videography',
-    description: 'Full event coverage',
-    duration: '4-8 hours',
+    id: 'portrait-silver',
+    name: 'Portrait Photography - Silver Package',
+    description: '1 hour session, 2 outfits, 30-50 edited photos, free Outfit Highlight Reel - R650',
+    duration: '1 hour',
   },
   {
-    id: 'commercial',
-    name: 'Commercial Photography & Videography',
-    description: 'Business and product content',
-    duration: '2-4 hours',
+    id: 'portrait-gold',
+    name: 'Portrait Photography - Gold Package',
+    description: '2 hour session, 2-3 outfits, 60-80 edited photos, free Outfit Highlight Reel - R900',
+    duration: '2 hours',
   },
   {
-    id: 'content',
-    name: 'Content Creation',
-    description: 'Social media and digital content',
-    duration: '1-3 hours',
+    id: 'bts',
+    name: 'BTS - Behind the Scenes Event Content',
+    description: '1.5 hours coverage, 2 edited videos, 40 individual videos, 20 photos - Starting at R800',
+    duration: '1 hour 30 minutes',
   },
 ];
 

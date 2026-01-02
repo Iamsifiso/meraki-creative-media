@@ -6,6 +6,7 @@ export interface PortfolioItem {
   src: string;
   thumbnail?: string;
   description?: string;
+  isBts?: boolean;
 }
 
 export type PortfolioCategory = 'all' | 'lifestyle' | 'commercial' | 'fashion' | 'photos' | 'videos' | 'bts';

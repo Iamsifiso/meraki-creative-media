@@ -25,7 +25,7 @@ export default function Header() {
       }`}
     >
       <div className="container-custom flex items-center justify-between">
-        <Logo variant="full" className="hidden md:block" />
+        <Logo variant="cropped" className="hidden md:block" />
         <Logo variant="icon" className="md:hidden" />
         <Navigation />
       </div>

@@ -90,7 +90,7 @@ EMAIL_PASSWORD
   Environment: Production, Preview
 
 BUSINESS_EMAIL
-  Value: info@merakicreativemedia.co.za
+  Value: meraki.cmedia@gmail.com
   Environment: Production, Preview
 
 BUSINESS_HOURS_START

@@ -23,6 +23,7 @@ export default function PortfolioContent() {
     if (activeFilter === 'all') return true;
     if (activeFilter === 'photos') return item.type === 'image';
     if (activeFilter === 'videos') return item.type === 'video';
+    if (activeFilter === 'bts') return item.isBts === true;
     return item.category === activeFilter;
   });
 

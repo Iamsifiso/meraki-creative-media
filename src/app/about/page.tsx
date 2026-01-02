@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Button from '@/components/shared/Button';
 import Badge from '@/components/shared/Badge';
+import VideoPlayer from '@/components/shared/VideoPlayer';
 
 export const metadata: Metadata = {
   title: 'About Us | Meraki Creative Media',
@@ -116,34 +117,45 @@ export default function AboutPage() {
             </div>
             <h2 className="font-heading text-4xl md:text-5xl mb-4">Behind the Scenes</h2>
             <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-              Get a glimpse of our creative process and the passion we pour into every project
+              Watch our videography work in action - authentic BTS content that captures the essence of every project
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/about-behind-the-scenes-1.jpg"
-                alt="Behind the scenes"
-                fill
-                className="object-cover hover:scale-110 transition-transform duration-300"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* ReSkin Medical Aesthetics Video */}
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <VideoPlayer
+                src="/videos/portfolio-medical-reskin-full.MOV"
+                title="ReSkin Medical Aesthetics"
               />
+              <div className="bg-white dark:bg-gray-800 p-4">
+                <h3 className="font-semibold text-lg mb-1">ReSkin Medical Aesthetics</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Commercial BTS Content</p>
+              </div>
             </div>
-            <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/about-behind-the-scenes-2.jpg"
-                alt="Behind the scenes"
-                fill
-                className="object-cover hover:scale-110 transition-transform duration-300"
+
+            {/* Lifestyle Café Red Video */}
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <VideoPlayer
+                src="/videos/portfolio-lifestyle-cafe-red.MP4"
+                title="Lifestyle Café"
               />
+              <div className="bg-white dark:bg-gray-800 p-4">
+                <h3 className="font-semibold text-lg mb-1">Lifestyle Café</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Lifestyle BTS Content</p>
+              </div>
             </div>
-            <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/services-client-experience.jpg"
-                alt="Client experience"
-                fill
-                className="object-cover hover:scale-110 transition-transform duration-300"
+
+            {/* Plato Coffee Commercial Video */}
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <VideoPlayer
+                src="/videos/portfolio-commercial-plato-coffee.MOV"
+                title="Plato Coffee Commercial"
               />
+              <div className="bg-white dark:bg-gray-800 p-4">
+                <h3 className="font-semibold text-lg mb-1">Plato Coffee Commercial</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Commercial BTS Content</p>
+              </div>
             </div>
           </div>
         </div>

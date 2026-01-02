@@ -559,8 +559,8 @@ PRODUCTION_CALENDAR_EMAIL=client_email@gmail.com
 
 # Email Service (Resend or Nodemailer SMTP)
 EMAIL_SERVICE_API_KEY=your_email_service_key
-BUSINESS_EMAIL=info@merakicreativemedia.co.za
-NOTIFICATION_EMAIL=bookings@merakicreativemedia.co.za
+BUSINESS_EMAIL=meraki.cmedia@gmail.com
+NOTIFICATION_EMAIL=meraki.cmedia@gmail.com
 
 # Business Configuration
 BUSINESS_HOURS_START=09:00

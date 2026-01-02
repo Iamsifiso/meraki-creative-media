@@ -80,7 +80,7 @@ EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASSWORD=your_app_password  # Use Gmail App Password, not regular password
-BUSINESS_EMAIL=info@merakicreativemedia.co.za
+BUSINESS_EMAIL=meraki.cmedia@gmail.com
 
 # Business Configuration
 BUSINESS_HOURS_START=09:00
@@ -359,7 +359,7 @@ Before launching, verify:
 ## Support
 
 For questions or issues, contact:
-- Email: info@merakicreativemedia.co.za
+- Email: meraki.cmedia@gmail.com
 - Location: Paarl, Western Cape, South Africa
 
 ---

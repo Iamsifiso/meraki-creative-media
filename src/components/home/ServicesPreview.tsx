@@ -7,20 +7,14 @@ const services = [
   {
     badge: 'photos' as const,
     title: 'Photography',
-    description: 'Professional portrait, lifestyle, and event photography that captures the essence of every moment.',
-    link: '/portfolio?filter=photos',
-  },
-  {
-    badge: 'videos' as const,
-    title: 'Videography',
-    description: 'Cinematic videography for commercials, events, and brand storytelling that brings your vision to life.',
-    link: '/portfolio?filter=videos',
+    description: 'Professional portrait photography with flexible packages. Choose from Bronze, Silver, or Gold packages tailored to your needs.',
+    link: '/services',
   },
   {
     badge: 'bts' as const,
-    title: 'Behind-the-Scenes',
-    description: 'Authentic content creation and BTS coverage that showcases the creative process and real moments.',
-    link: '/portfolio?filter=bts',
+    title: 'Videography',
+    description: 'Behind-the-scenes event content captured with mobile devices and delivered within 24 hours. Perfect for authentic, immediate content.',
+    link: '/services',
   },
 ];
 
@@ -35,7 +29,7 @@ export default function ServicesPreview() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {services.map((service) => (
             <Link key={service.title} href={service.link}>
               <Card hover className="p-8 text-center h-full">

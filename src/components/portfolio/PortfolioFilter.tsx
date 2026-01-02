@@ -13,14 +13,12 @@ const filters: { id: PortfolioCategory; label: string; badge?: 'photos' | 'video
   { id: 'all', label: 'All Works' },
   { id: 'photos', label: 'Photos', badge: 'photos' },
   { id: 'videos', label: 'Videos', badge: 'videos' },
-  { id: 'lifestyle', label: 'Lifestyle' },
-  { id: 'commercial', label: 'Commercial' },
-  { id: 'fashion', label: 'Fashion' },
+  { id: 'bts', label: 'BTS', badge: 'bts' },
 ];
 
 export default function PortfolioFilter({ activeFilter, onFilterChange }: PortfolioFilterProps) {
   return (
-    <div className="flex flex-wrap gap-4 justify-center mb-12">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
       {filters.map((filter) => (
         <div key={filter.id} className="flex flex-col items-center">
           {filter.badge ? (

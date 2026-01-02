@@ -154,7 +154,7 @@ EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASSWORD=abcd efgh ijkl mnop  # 16-character app password
-BUSINESS_EMAIL=info@merakicreativemedia.co.za
+BUSINESS_EMAIL=meraki.cmedia@gmail.com
 
 # Business Configuration
 BUSINESS_HOURS_START=09:00

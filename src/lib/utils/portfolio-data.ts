@@ -90,6 +90,7 @@ export const portfolioItems: PortfolioItem[] = [
     type: 'video',
     src: '/videos/portfolio-medical-reskin-full.MOV',
     description: 'Reskin Medical Aesthetics full video',
+    isBts: true,
   },
   {
     id: '12',
@@ -98,6 +99,7 @@ export const portfolioItems: PortfolioItem[] = [
     type: 'video',
     src: '/videos/portfolio-lifestyle-fashion-pink.MOV',
     description: 'Lifestyle fashion video',
+    isBts: true,
   },
   {
     id: '13',
@@ -106,6 +108,7 @@ export const portfolioItems: PortfolioItem[] = [
     type: 'video',
     src: '/videos/portfolio-fashion-blue-dress.MOV',
     description: 'Fashion video with blue dress',
+    isBts: true,
   },
   {
     id: '14',
@@ -114,5 +117,6 @@ export const portfolioItems: PortfolioItem[] = [
     type: 'video',
     src: '/videos/portfolio-lifestyle-cafe-red.MP4',
     description: 'Lifestyle video at café',
+    isBts: true,
   },
 ];

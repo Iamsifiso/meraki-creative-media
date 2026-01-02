@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.BUSINESS_EMAIL || 'info@merakicreativemedia.co.za',
+      to: process.env.BUSINESS_EMAIL || 'meraki.cmedia@gmail.com',
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `
